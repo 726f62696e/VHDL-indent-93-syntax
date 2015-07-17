@@ -104,7 +104,7 @@ function GetVHDLindent()
     let pn = prevnonblank(pn - 1)
     let ps = getline(pn)
   endwhile
-  if (curs =~ '^\s*)' || curs =~? '^\s*\%(\<\%(procedure\|generic\|map\|port\)\>.*\)\@<!\w\+\s*\w*\s*\%(=>\s*\S\+\|:[^=]\@=\s*\%(\%(in\|out\|inout\|buffer\|linkage\)\>\|\w\+\s\+:=\)\)') && (prevs =~? s:NC.'\<\%(procedure\s\+\S\+\|generic\|map\|port\)\s*(\%(\s*\w\)\=' || (ps =~? s:NC.'\<\%(procedure\|generic\|map\|port\)'.s:ES && prevs =~ '^\s*('))
+  if (curs =~ '^\s*)' || curs =~? '^\s*\%(\<\%(procedure\|generic\|map\|port\)\>.*\)\@<!\w\+\s*\w*\s*\((.*)\)*\s*\%(=>\s*\S\+\|:[^=]\@=\s*\%(\%(in\|out\|inout\|buffer\|linkage\)\>\|\w\+\s\+:=\)\)') && (prevs =~? s:NC.'\<\%(procedure\s\+\S\+\|generic\|map\|port\)\s*(\%(\s*\w\)\=' || (ps =~? s:NC.'\<\%(procedure\|generic\|map\|port\)'.s:ES && prevs =~ '^\s*('))
     " align closing ")" with opening "("
     if curs =~ '^\s*)'
       return ind2 + stridx(prevs_noi, '(')
